@@ -1,0 +1,109 @@
+﻿.search-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.search-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.search-header h1 {
+  color: #3f51b5;
+  margin: 0 0 8px;
+}
+
+.search-header p {
+  color: #666;
+  margin: 0;
+}
+
+.search-controls {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+
+.search-field {
+  flex: 1;
+  min-width: 300px;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  padding: 48px;
+}
+
+.error {
+  text-align: center;
+  padding: 24px;
+  color: #f44336;
+  background: #ffebee;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.movies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.movie-card {
+  transition: transform 0.3s;
+}
+
+.movie-card:hover {
+  transform: translateY(-4px);
+}
+
+.movie-card img {
+  height: 400px;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+mat-card-content h3 {
+  margin: 16px 0 8px;
+  font-size: 18px;
+}
+
+mat-card-content p {
+  color: #666;
+  margin: 0;
+}
+
+mat-card-actions {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px !important;
+}
+
+.empty {
+  text-align: center;
+  padding: 64px;
+  color: #999;
+}
+
+.empty mat-icon {
+  font-size: 64px;
+  width: 64px;
+  height: 64px;
+  margin-bottom: 16px;
+}
+
+@media (max-width: 768px) {
+  .search-controls {
+    flex-direction: column;
+  }
+
+  .search-field {
+    min-width: auto;
+  }
+
+  .movies-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+}

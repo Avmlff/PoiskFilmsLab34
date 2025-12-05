@@ -1,0 +1,76 @@
+﻿<div class="search-container">
+  <div class="search-header">
+    <h1>Поиск фильмов</h1>
+    <p>Введите название фильма или сериала</p>
+  </div>
+
+  <div class="search-controls">
+    <mat-form-field appearance="outline" class="search-field">
+      <mat-label>Название фильма</mat-label>
+      <input
+        matInput
+        [formControl]="searchControl"
+        (input)="onSearch()"
+        placeholder="Например: Avatar, Game of Thrones"
+      />
+      <mat-icon matPrefix>search</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Тип</mat-label>
+      <mat-select [formControl]="typeControl" (selectionChange)="onTypeChange()">
+        <mat-option value="movie">Фильмы</mat-option>
+        <mat-option value="series">Сериалы</mat-option>
+        <mat-option value="episode">Эпизоды</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  @if (loading) {
+    <div class="loading">
+      <mat-spinner></mat-spinner>
+    </div>
+  }
+
+  @if (error && !loading) {
+    <div class="error">
+      {{ error }}
+    </div>
+  }
+
+  @if (movies.length > 0) {
+    <div class="movies-grid">
+      @for (movie of movies; track movie.imdbID) {
+        <mat-card class="movie-card">
+          <img
+            mat-card-image
+            [src]="movie.Poster !== 'N/A' ? movie.Poster : 'https://via.placeholder.com/300x450?text=No+Poster'"
+            [alt]="movie.Title"
+            (click)="openDetails(movie.imdbID)"
+          />
+          <mat-card-content>
+            <h3>{{ movie.Title }}</h3>
+            <p>{{ movie.Year }} • {{ movie.Type === 'movie' ? 'Фильм' : movie.Type === 'series' ? 'Сериал' : 'Эпизод' }}</p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button
+              mat-icon-button
+              [color]="isFavorite(movie.imdbID) ? 'warn' : ''"
+              (click)="toggleFavorite(movie)"
+            >
+              <mat-icon>{{ isFavorite(movie.imdbID) ? 'favorite' : 'favorite_border' }}</mat-icon>
+            </button>
+            <button mat-button (click)="openDetails(movie.imdbID)">Подробнее</button>
+          </mat-card-actions>
+        </mat-card>
+      }
+    </div>
+  }
+
+  @if (!searchControl.value && !loading && !error) {
+    <div class="empty">
+      <mat-icon>search</mat-icon>
+      <p>Введите название для поиска</p>
+    </div>
+  }
+</div>

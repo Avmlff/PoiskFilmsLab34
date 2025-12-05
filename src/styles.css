@@ -1,0 +1,22 @@
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+
+body.dark-theme {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+body.dark-theme .mat-mdc-card {
+  background-color: #1e1e1e;
+  color: #ffffff;
+}
+
+body.dark-theme .mat-mdc-form-field {
+  --mdc-filled-text-field-container-color: #2d2d2d;
+  --mdc-filled-text-field-input-text-color: #ffffff;
+  --mdc-filled-text-field-label-text-color: rgba(255, 255, 255, 0.6);
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
