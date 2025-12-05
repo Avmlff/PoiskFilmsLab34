@@ -45,7 +45,7 @@ import { MovieDetailsDialogComponent } from '../movie-details-dialog/movie-detai
             />
             <mat-card-content>
               <h3>{{ movie.Title }}</h3>
-              <p>{{ movie.Year }} • {{ movie.Type === 'movie' ? 'Фильм' : movie.Type === 'series' ? 'Сериал' : 'Эпизод' }}</p>
+              <p>{{ movie.Year }} • {{ movie.Type === 'movie' ? 'Фильм' : 'Сериал' }}</p>
             </mat-card-content>
             <mat-card-actions>
               <button
